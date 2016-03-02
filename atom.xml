@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-02-27T17:56:49-05:00</updated>
+  <updated>2016-03-01T19:38:34-05:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Installing Jasper on Raspberry Pi B+]]></title>
+    <title type="html"><![CDATA[Installing PocketSphinx for Jasper on the Raspberry Pi B+]]></title>
     <link href="http://chrismeiercs.github.io/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus/"/>
     <updated>2016-02-27T17:46:31-05:00</updated>
     <id>http://chrismeiercs.github.io/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus</id>
-    <content type="html"><![CDATA[<p>This guide is meant to help anyone that is trying to put Jasper on the B+ and is having as much trouble as I am. I couldn’t get the Phonetisaurus model to build and I was stuck for a few days, mainly due to the fact that these programs take a long time to build. ]]></content>
+    <content type="html"><![CDATA[<p>This guide is meant to help anyone that is trying to put Jasper on the B+ and is having trouble installing PocketSphinx. ]]></content>
   </entry>
   
 </feed>

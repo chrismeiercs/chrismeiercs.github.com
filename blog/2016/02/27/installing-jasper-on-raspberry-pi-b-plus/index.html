@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Installing Jasper on Raspberry Pi B+ - Chris Meier</title>
+  <title>Installing PocketSphinx for Jasper on the Raspberry Pi B+ - Chris Meier</title>
   <meta name="author" content="Chris Meier">
 
   <!-- Causes trouble with per-article font implementations under /source/_includes/article.html
   
-  <meta name="description" content="Installing Jasper on Raspberry Pi B+ This guide is meant to help anyone that is trying to put Jasper on the B+ and is having as much trouble as I am &hellip;">
+  <meta name="description" content="Installing PocketSphinx for Jasper on the Raspberry Pi B+ This guide is meant to help anyone that is trying to put Jasper on the B+ and is having &hellip;">
   -->
   
 
@@ -92,7 +92,7 @@
   <header>
     
       
-        <h1 class="entry-title" style="font-family: ">Installing Jasper on Raspberry Pi B+</h1>
+        <h1 class="entry-title" style="font-family: ">Installing PocketSphinx for Jasper on the Raspberry Pi B+</h1>
       
     
     
@@ -110,7 +110,7 @@
   </header>
 
 
-<div class="entry-content" style="font-family: ; font-size: "><p>This guide is meant to help anyone that is trying to put Jasper on the B+ and is having as much trouble as I am. I couldn’t get the Phonetisaurus model to build and I was stuck for a few days, mainly due to the fact that these programs take a long time to build. <!-- more -->
+<div class="entry-content" style="font-family: ; font-size: "><p>This guide is meant to help anyone that is trying to put Jasper on the B+ and is having trouble installing PocketSphinx. <!-- more -->I couldn’t get the Phonetisaurus model to build and I was stuck for a few days, mainly due to the fact that these programs take a long time to build.
 The issue I ran into with Phonetisaurus was some invalid instruction errors. I searched the internet and was able to find this <a href="https://groups.google.com/forum/#!topic/jasper-support-forum/_i1PDuW-fSQ">post</a></p>
 
 <p>The problem is that Phonetisaurus, m2m-aligner and MITLM contained in the experimental repository supplied in the instructions are build for armv7. The B+ is armv6. This explains the invalid instruction errors I was getting.</p>
@@ -122,74 +122,81 @@ Follow the instructions until you get to the part where you have to install Phon
 
 <p>Instead of:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo su -c "echo 'deb http://ftp.debian.org/debian experimental main contrib non-free' &gt; /etc/apt/sources.list.d/experimental.list"
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo su -c <span class="s2">&quot;echo &#39;deb http://ftp.debian.org/debian experimental main contrib non-free&#39; &gt; /etc/apt/sources.list.d/experimental.list&quot;</span>
 </span><span class='line'>sudo apt-get update
-</span><span class='line'>sudo apt-get -t experimental install phonetisaurus m2m-aligner mitlm libfst-tools</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>sudo apt-get -t experimental install phonetisaurus m2m-aligner mitlm libfst-tools
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Do:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># add repo
-</span><span class='line'>sudo su -c "echo 'deb http://cognomen.co.uk/apt/debian jessie main' &gt; /etc/apt/sources.list.d/cognomen.list"
-</span><span class='line'># import pgp key
-</span><span class='line'>gpg --keyserver keyserver.ubuntu.com --recv  FC88E181D61C9391C4A49682CF36B219807AA92B && gpg --export --armor keymaster@cognomen.co.uk | sudo apt-key add -
-</span><span class='line'># update
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># add repo</span>
+</span><span class='line'>sudo su -c <span class="s2">&quot;echo &#39;deb http://cognomen.co.uk/apt/debian jessie main&#39; &gt; /etc/apt/sources.list.d/cognomen.list&quot;</span>
+</span><span class='line'><span class="c"># import pgp key</span>
+</span><span class='line'>gpg --keyserver keyserver.ubuntu.com --recv  FC88E181D61C9391C4A49682CF36B219807AA92B <span class="o">&amp;&amp;</span> gpg --export --armor keymaster@cognomen.co.uk <span class="p">|</span> sudo apt-key add -
+</span><span class='line'><span class="c"># update</span>
 </span><span class='line'>sudo apt-get update
-</span><span class='line'>sudo apt-get install phonetisaurus m2m-aligner mitlm libfst-tools libfst1-plugins-base libfst-dev</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>sudo apt-get install phonetisaurus m2m-aligner mitlm libfst-tools libfst1-plugins-base libfst-dev
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You can then build the Phonetisaurus model according to the official instructions:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>wget https://www.dropbox.com/s/kfht75czdwucni1/g014b2b.tgz
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>wget https://www.dropbox.com/s/kfht75czdwucni1/g014b2b.tgz
 </span><span class='line'>tar -xvf g014b2b.tgz
-</span><span class='line'>cd g014b2b/
+</span><span class='line'><span class="nb">cd </span>g014b2b/
 </span><span class='line'>./compile-fst.sh
-</span><span class='line'>cd ..</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will take a couple of hours, so it’s best if you leave it and go do something else.</p>
-
-<p>Then rename the directory for convenience:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mv ~/g014b2b ~/phonetisaurus</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The PocketSphinx HMM neeexplicitly:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install pocketsphinx-hmm-en-hub4wsj</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Finally, set the HMM directory and the FST model in your profile.yml</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>stt_engine: sphinx
-</span><span class='line'>pocketsphinx:
-</span><span class='line'> fst_model: '../phonetisaurus/g014b2b.fst'                             
-</span><span class='line'> hmm_dir: '/usr/local/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k' 
+</span><span class='line'><span class="nb">cd</span> ..
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You should be good to go. Just restart your Pi with your microphone plugged in and Jasper will now work!</p>
+<p>This will take a couple of hours, so it’s best if you leave it and come back later.</p>
+
+<p>Then rename the directory for convenience:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mv ~/g014b2b ~/phonetisaurus
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The PocketSphinx HMM needs to be installed explicitly:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install pocketsphinx-hmm-en-hub4wsj
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally, set the locations of the HMM and the FST model in your profile.yml</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">stt_engine</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sphinx</span>
+</span><span class='line'><span class="l-Scalar-Plain">pocketsphinx</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="l-Scalar-Plain"> fst_model</span><span class="p-Indicator">:</span> <span class="s">&#39;../phonetisaurus/g014b2b.fst&#39;</span> <span class="l-Scalar-Plain">                            </span>
+</span><span class='line'><span class="l-Scalar-Plain"> hmm_dir</span><span class="p-Indicator">:</span> <span class="s">&#39;/usr/local/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You should be good to go with PocketSphinx. You can further configure Jasper following the instructions <a href="http://jasperproject.github.io/documentation/configuration/">here</a>.</p>
+
+<p>When your configuration is complete, just restart your Pi with your microphone plugged in and Jasper will now work!</p>
 </div>
 
 

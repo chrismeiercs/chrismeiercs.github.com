@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-03-01T19:40:54-05:00</updated>
+  <updated>2016-03-12T21:17:35-05:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hermes: A Jasper Module for Sending SMS Messages]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/"/>
+    <updated>2016-03-12T00:00:00-05:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages</id>
+    <content type="html"><![CDATA[<p><a href="http://jasperproject.github.io/">Jasper</a> is a great platform to develop voice-controlled applications. It has excellent developer <a href="http://jasperproject.github.io/documentation/api/">documentation</a> that makes it easy to create your own modules. Jasper is pretty cool so I decided to start programming some modules myself.</p>
+
+<p>The first is called <a href="https://github.com/chrismeiercs/Hermes">Hermes</a>. This module will allow you to send SMS messages to your friends and family through the Twilio API. ]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing PocketSphinx for Jasper on the Raspberry Pi B+]]></title>

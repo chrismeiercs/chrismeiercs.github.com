@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hermes: A Jasper Module for Sending SMS Messages - Chris Meier</title>
+  <meta name="author" content="Chris Meier">
+
+  <!-- Causes trouble with per-article font implementations under /source/_includes/article.html
+  
+  <meta name="description" content="Hermes: A Jasper Module for Sending SMS Messages Jasper is a great platform to develop voice-controlled applications. It has excellent developer &hellip;">
+  -->
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Chris Meier" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Poller+One" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Germania+One" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Lato&subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Cardo&subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Sorts+Mill+Goudy" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Della+Respira" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=UnifrakturMaguntia&subset=all" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Arimo|EB+Garamond|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<logo>
+
+<img src="/logo.png" alt="Website Logo. Upload to /source/logo.png ; disable in /source/_includes/logo.html" height="32px" width="32px">
+</logo>
+
+
+
+<body >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Chris Meier</a></h1>
+  
+    <h2>Software Developer and Enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+<li><a href="/about">About Me</a></li>
+</ul>
+
+<br>
+
+      
+        <form action="https://www.google.com/search" method="get">
+          <fieldset role="search">
+            <input type="hidden" name="q" value="site:chrismeiercs.github.io" />
+      
+      
+            <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+          </fieldset>
+        </form>
+  
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title" style="font-family: ">Hermes: A Jasper Module for Sending SMS Messages</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content" style="font-family: ; font-size: "><p><a href="http://jasperproject.github.io/">Jasper</a> is a great platform to develop voice-controlled applications. It has excellent developer <a href="http://jasperproject.github.io/documentation/api/">documentation</a> that makes it easy to create your own modules. Jasper is pretty cool so I decided to start programming some modules myself.</p>
+
+<p>The first is called <a href="https://github.com/chrismeiercs/Hermes">Hermes</a>. This module will allow you to send SMS messages to your friends and family through the Twilio API. <!--more-->Let&rsquo;s get started:</p>
+
+<p>If you haven’t already, register an account with Twilio and install the Python module:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo pip install twilio
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then add your Twilio information in your profile.yml</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">TWILIO_ACCOUNT_SID</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">account sid</span>
+</span><span class='line'><span class="l-Scalar-Plain">TWILIO_AUTH_TOKEN</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">auth token</span>
+</span><span class='line'><span class="l-Scalar-Plain">TWILIO_PHONE_NUMBER</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Phone number as a string</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Create a new file titled <code>Hermes.py</code>
+We will need to import two modules for this project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">re</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">twilio.rest</span> <span class="kn">import</span> <span class="n">TwilioRestClient</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First we need to define the words that will activate Hermes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">WORDS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;SEND&quot;</span><span class="p">,</span><span class="s">&quot;TEXT&quot;</span><span class="p">,</span><span class="s">&quot;MESSAGE&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We then need to define an <code>isValid()</code> method that will allow Jasper to launch our module. Jasper will be looking for the words specified in the list above. We do this by using regular expressions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;\bsend text message\b&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, Jasper is looking for the phrase “send text message” in our command.</p>
+
+<p>Once our command is deemed valid, we need a way to handle it and take action:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mic</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this <code>handle()</code> method we will need to do a few things:</p>
+
+<ol>
+<li>Grab your Twilio keys</li>
+<li>Ask you who you want to send a message to and grab their number</li>
+<li>Retrieve your Twilio number</li>
+<li>Send the text message</li>
+</ol>
+
+
+<p>In order to use Twilio, your Account SID and Auth Token must be available to Jasper. We will retrieve them and initialize the Twilio client:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mic</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">account_sid</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">auth_token</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">client</span> <span class="o">=</span> <span class="n">TwilioRestClient</span><span class="p">(</span><span class="n">account_sid</span><span class="p">,</span> <span class="n">auth_token</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next, we need to decide who to send it to. We will use a contacts list in your <code>profile.yml</code> to store phone numbers. Due to inaccuracies with STT engines, you can only send messages to numbers in your contacts. This way we avoid issues with Jasper correctly hearing the number you want to send to. We will use a simple dictionary for the contacts list. The key will be the person’s name and the value will be the phone number as a string</p>
+
+<p>Let’s start your contacts list with your Mom’s and your Dad’s numbers. Open your <code>profile.yml</code> and add the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">TWILIO_CONTACTS{MOM</span><span class="p-Indicator">:</span> <span class="s">&quot;+15555555555&quot;</span><span class="err">,</span> <span class="l-Scalar-Plain">DAD</span><span class="p-Indicator">:</span> <span class="s">&quot;+14444444444&quot;</span><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just replace the numbers with their actual numbers. Be sure to include the country code prefix in the number (if you are in the US it it +1).</p>
+
+<p>Jasper will ask who you want to send a message to and then get their number from your contacts list:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mic</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">account_sid</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">auth_token</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">client</span> <span class="o">=</span> <span class="n">TwilioRestClient</span><span class="p">(</span><span class="n">account_sid</span><span class="p">,</span> <span class="n">auth_token</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#Ask who you want to message and get their number</span>
+</span><span class='line'>    <span class="n">mic</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s">&quot;Who would you like to send it to?&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">contact</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">activeListen</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">contact_number</span> <span class="o">=</span> <span class="n">getContactNumber</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">profile</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The method for retrieving the contact’s number:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">getContactNumber</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_CONTACTS&quot;</span><span class="p">][</span><span class="n">contact</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We then must get your Twilio number from your profile.yml:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">getMyNumber</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_PHONE_NUMBER&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add it to the <code>handle()</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mic</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">account_sid</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">auth_token</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">client</span> <span class="o">=</span> <span class="n">TwilioRestClient</span><span class="p">(</span><span class="n">account_sid</span><span class="p">,</span> <span class="n">auth_token</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">mic</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s">&quot;Who would you like to send it to?&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">contact</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">activeListen</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">contact_number</span> <span class="o">=</span> <span class="n">getContactNumber</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">profile</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#get your number</span>
+</span><span class='line'>    <span class="n">my_number</span> <span class="o">=</span> <span class="n">getMyNumber</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally we send the text message:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">sendSMS</span><span class="p">(</span><span class="n">mic</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">to_phone_number</span><span class="p">,</span> <span class="n">from_phone_number</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">mic</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s">&quot;What would you like to say?&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#make it all lowercase so it doesn&#39;t seem like we&#39;re shouting </span>
+</span><span class='line'>    <span class="n">message</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">activeListen</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="n">to_phone_number</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="n">from_phone_number</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">mic</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s">&quot;Text message sent&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We then add it to our <code>handle()</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mic</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">account_sid</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">auth_token</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">client</span> <span class="o">=</span> <span class="n">TwilioRestClient</span><span class="p">(</span><span class="n">account_sid</span><span class="p">,</span> <span class="n">auth_token</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">mic</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s">&quot;Who would you like to send it to?&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">contact</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">activeListen</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">contact_number</span> <span class="o">=</span> <span class="n">getContactNumber</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">profile</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">my_number</span> <span class="o">=</span> <span class="n">getMyNumber</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#send the text message</span>
+</span><span class='line'>    <span class="n">sendSMS</span><span class="p">(</span><span class="n">mic</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">contact_number</span><span class="p">,</span> <span class="n">my_number</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This method is where all of the action happens. Jasper will ask you what you would like to say in your text message. We then use the Twilio client to create a message using the contact’s phone number, your phone number, and then the message that you specify. The message will then be sent through the Twilio API to your contact’s number. Jasper will then verbally confirm that the text message was sent. It’s really that easy! No more excuses to not send “Happy Birthday” wishes to your friends and family.</p>
+
+<p>To use Hermes with Jasper, add it to your modules folder:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cp Hermes.py ~/jasper/client/modules/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This was my first module developed for Jasper. It turns out that it&rsquo;s super easy to write modules for it. It took me under two hours to write Hermes. I’m pretty excited to explore it further especially in the home automation domain.</p>
+
+<p>If you haven’t already, head on over to <a href="https://github.com/chrismeiercs/Hermes">Github</a> and check it out.</p>
+</div>
+
+
+  <footer class="page-footer">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Text authored by <span class="fn">Chris Meier</span></span>
+
+
+      
+
+
+
+
+
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/" data-via="" data-counturl="http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus/" title="Previous Post: Installing PocketSphinx for Jasper on the Raspberry Pi B+">&laquo; Installing PocketSphinx for Jasper on the Raspberry Pi B+</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Website copyright &copy; 2016 - Chris Meier |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/TheChymera/Koenigspress">Königspress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

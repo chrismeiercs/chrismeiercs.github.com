@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>NodeHeart Part 1: Setting Up the Heart Monitor - Chris Meier</title>
+  <meta name="author" content="Chris Meier">
+
+  <!-- Causes trouble with per-article font implementations under /source/_includes/article.html
+  
+  <meta name="description" content="NodeHeart Part 1: Setting Up the Heart Monitor In this series, we will be building a prototype smart heart monitor. The first part will be setting &hellip;">
+  -->
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link rel="canonical" href="http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Chris Meier" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Poller+One" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Germania+One" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Lato&subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Cardo&subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Sorts+Mill+Goudy" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Della+Respira" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=UnifrakturMaguntia&subset=all" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Arimo|EB+Garamond|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<logo>
+
+<img src="/logo.png" alt="Website Logo. Upload to /source/logo.png ; disable in /source/_includes/logo.html" height="32px" width="32px">
+</logo>
+
+
+
+<body >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Chris Meier</a></h1>
+  
+    <h2>Software Developer and Enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+<li><a href="/about">About Me</a></li>
+</ul>
+
+<br>
+
+      
+        <form action="https://www.google.com/search" method="get">
+          <fieldset role="search">
+            <input type="hidden" name="q" value="site:chrismeiercs.github.io" />
+      
+      
+            <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+          </fieldset>
+        </form>
+  
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title" style="font-family: ">NodeHeart Part 1: Setting Up the Heart Monitor</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content" style="font-family: ; font-size: "><p>In this series, we will be building a prototype smart heart monitor. The first part will be setting up the heart monitor with an Arduino.</p>
+
+<!--more-->
+
+
+<p>The Internet of Things is exploding right now when it comes to home automation. However, these are not its limits. I’m fascinated with the Internet of Medical Things and the power that it can bring to healthcare. To further explore this field, I decided to build a smart heart monitor. In this first part I will be building the actual heart monitor. In the second we will look at how to hook it up to the internet and make it a more powerful tool.</p>
+
+<p>For this first part, we will need a few things:</p>
+
+<ol>
+<li><a href="http://www.amazon.com/gp/product/B008GRTSV6?psc=1&amp;redirect=true&amp;ref_=oh_aui_detailpage_o00_s00">Arduino Uno</a></li>
+<li>USB A-to-B <a href="https://www.sparkfun.com/products/512">cable</a> to power the Arduino Uno</li>
+<li><a href="https://www.sparkfun.com/products/12650?_ga=1.260121230.284157800.1455235335">Heart Monitor Shield</a> from Sparkfun</li>
+<li>Four <a href="https://www.sparkfun.com/products/115">female</a> header pins to connect the heart monitor to the Arduino</li>
+<li><a href="https://www.sparkfun.com/products/124">Jumper Wires</a></li>
+<li>Heart <a href="https://www.sparkfun.com/products/12970">leads</a> and <a href="https://www.sparkfun.com/products/12969">pads</a></li>
+</ol>
+
+
+<p>You can follow the full hookup guide <a href="https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide?_ga=1.240387072.284157800.1455235335#uploading-the-sketch-and-connecting-with-processing">here</a> and get all the code from the heart monitor’s <a href="https://github.com/sparkfun/AD8232_Heart_Rate_Monitor">Github</a>. I am putting the must-know sections of each here for ease of reference. The hookup table and lead placement photo is taken from the full guide while the sketches are taken from the heart monitor&rsquo;s Github.</p>
+
+<p>First, attach the header pins to the heart rate monitor. I used female pins. The Arduino also has female pins, so it will be easy to connect the two with jumper wires.</p>
+
+<p>Second, we will attach the heart monitor to the Arduino Uno accordingly:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"> Board Label </th>
+<th align="center"> Pin Function </th>
+<th align="center"> Arduino Connection </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center"> GND </td>
+<td align="center"> Ground </td>
+<td align="center"> GND </td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> 3.3v </td>
+<td align="center"> 3.3v Power Supply </td>
+<td align="center"> 3.3v </td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> OUTPUT </td>
+<td align="center"> Output Signal </td>
+<td align="center"> A0 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> LO- </td>
+<td align="center"> Leads-off Detect &ndash; </td>
+<td align="center"> 11 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> LO+ </td>
+<td align="center"> Leads-off Detect + </td>
+<td align="center"> 10 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> SDN </td>
+<td align="center"> Shutdown </td>
+<td align="center"> Not used </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Once that is complete, plug the USB cable into the Arduino and then your PC. You can read Sparkfun’s <a href="https://learn.sparkfun.com/tutorials/installing-arduino-ide">install guide</a> if this is your first time.</p>
+
+<p><img src="/images/itsalive.jpg" title="image" alt="images"></p>
+
+<p>Place the leads onto your body then plug it into the heart rate monitor. Make sure to attach the pads to the leads prior to putting them on your body:</p>
+
+<p><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/5/0/body.png"></p>
+
+<p>Upload the sketch to the Arduino:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cm">/******************************************************************************</span>
+</span><span class='line'><span class="cm">Heart_Rate_Display.ino</span>
+</span><span class='line'><span class="cm">Demo Program for AD8232 Heart Rate sensor.</span>
+</span><span class='line'><span class="cm">Casey Kuhns @ SparkFun Electronics</span>
+</span><span class='line'><span class="cm">6/27/2014</span>
+</span><span class='line'><span class="cm">https://github.com/sparkfun/AD8232_Heart_Rate_Monitor</span>
+</span><span class='line'><span class="cm">******************************************************************************/</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// initialize the serial communication:</span>
+</span><span class='line'>  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">pinMode</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span> <span class="c1">// Setup for leads off detection LO +</span>
+</span><span class='line'>  <span class="n">pinMode</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span> <span class="c1">// Setup for leads off detection LO -</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span><span class="p">((</span><span class="n">digitalRead</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)){</span>
+</span><span class='line'>    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sc">&#39;!&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">else</span><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// send the value of analog input 0:</span>
+</span><span class='line'>      <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">));</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">//Wait for a bit to keep serial data from saturating</span>
+</span><span class='line'>  <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, we are setting the communication to a baud rate of 9600. Data coming from LO- and LO+ is used for detecting “lead-off” signal. This is when an electrode is making poor electrical contact. Since this is not valid data (for our purposes), it can be discarded. We will use a “!” to mark invalid data. Lead-off signal can actually be used to detect respiration rates, but we won’t be doing that here. We will consider anything coming from Analog In Pin A0 as valid data.</p>
+
+<p>We then write a sketch in Processing, which will allow us to read and interpret the data from the heart rate monitor. It is important that Processing 2.2.1 is used. If Processing 3 is used, the map function will return NaN (Not a Number) error and it won’t work. This has to do with loss of back-compatibility, so Processing 2 sketches won’t work and the sketch provided is for Processing 2. You can download it <a href="https://processing.org/download/?processing">here</a>.</p>
+
+<p>Here is the Processing sketch:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cm">/******************************************************************************</span>
+</span><span class='line'><span class="cm">Heart_Rate_Display.ino</span>
+</span><span class='line'><span class="cm">Demo Program for AD8232 Heart Rate sensor.</span>
+</span><span class='line'><span class="cm">Casey Kuhns @ SparkFun Electronics</span>
+</span><span class='line'><span class="cm">6/27/2014</span>
+</span><span class='line'><span class="cm">https://github.com/sparkfun/AD8232_Heart_Rate_Monitor</span>
+</span><span class='line'><span class="cm">******************************************************************************/</span>
+</span><span class='line'><span class="n">import</span> <span class="n">processing</span><span class="p">.</span><span class="n">serial</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Serial</span> <span class="n">myPort</span><span class="p">;</span>        <span class="c1">// The serial port</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">xPos</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>         <span class="c1">// horizontal position of the graph</span>
+</span><span class='line'><span class="kt">float</span> <span class="n">height_old</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kt">float</span> <span class="n">height_new</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kt">float</span> <span class="n">inByte</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">setup</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// set the window size:</span>
+</span><span class='line'>  <span class="n">size</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// List all the available serial ports</span>
+</span><span class='line'>  <span class="n">println</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">list</span><span class="p">());</span>
+</span><span class='line'>  <span class="c1">// Open whatever port is the one you&#39;re using.</span>
+</span><span class='line'>  <span class="n">myPort</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Serial</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">Serial</span><span class="p">.</span><span class="n">list</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">9600</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// don&#39;t generate a serialEvent() unless you get a newline character:</span>
+</span><span class='line'>  <span class="n">myPort</span><span class="p">.</span><span class="n">bufferUntil</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// set inital background:</span>
+</span><span class='line'>  <span class="n">background</span><span class="p">(</span><span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">draw</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// everything happens in the serialEvent()</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">serialEvent</span> <span class="p">(</span><span class="n">Serial</span> <span class="n">myPort</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// get the ASCII string:</span>
+</span><span class='line'>  <span class="n">String</span> <span class="n">inString</span> <span class="o">=</span> <span class="n">myPort</span><span class="p">.</span><span class="n">readStringUntil</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">inString</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// trim off any whitespace:</span>
+</span><span class='line'>    <span class="n">inString</span> <span class="o">=</span> <span class="n">trim</span><span class="p">(</span><span class="n">inString</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// If leads off detection is true notify with blue line</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">inString</span><span class="p">.</span><span class="n">equals</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">);</span> <span class="c1">//Set stroke to blue ( R, G, B)</span>
+</span><span class='line'>      <span class="n">inByte</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>  <span class="c1">// middle of the ADC range (Flat Line)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// If the data is good let it through</span>
+</span><span class='line'>    <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">stroke</span><span class="p">(</span><span class="mh">0xff</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">//Set stroke to red ( R, G, B)</span>
+</span><span class='line'>      <span class="n">inByte</span> <span class="o">=</span> <span class="kt">float</span><span class="p">(</span><span class="n">inString</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="c1">//Map and draw the line for new data point</span>
+</span><span class='line'>     <span class="n">inByte</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">inByte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+</span><span class='line'>     <span class="n">height_new</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="n">inByte</span><span class="p">;</span>
+</span><span class='line'>     <span class="n">line</span><span class="p">(</span><span class="n">xPos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height_old</span><span class="p">,</span> <span class="n">xPos</span><span class="p">,</span> <span class="n">height_new</span><span class="p">);</span>
+</span><span class='line'>     <span class="n">height_old</span> <span class="o">=</span> <span class="n">height_new</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// at the edge of the screen, go back to the beginning:</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="n">xPos</span> <span class="o">&gt;=</span> <span class="n">width</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">xPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">background</span><span class="p">(</span><span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// increment the horizontal position:</span>
+</span><span class='line'>        <span class="n">xPos</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Upload the sketch to the Arduino and then run the Processing sketch. A graph should pop up displaying your heart rate. Pretty cool!</p>
+
+<p><img src="/images/heartprocessingblog.png" title="image" alt="images"></p>
+
+<p> If you are getting a flat blue line, that means no valid data is coming through. You may have to mess with the lead connection going into the heart monitor to start getting valid data in.</p>
+
+<p>If you are having any more problems, you can head over to the tutorial <a href="https://learn.sparkfun.com/tutorials/ad8232-heart-ratSmare-monitor-hookup-guide/discuss">discussion</a> for more troubleshooting advice.</p>
+
+<p>Next up we will explore hooking the heart rate monitor up to Node.js.</p>
+</div>
+
+
+  <footer class="page-footer">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Text authored by <span class="fn">Chris Meier</span></span>
+
+
+      
+
+
+
+
+
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/" data-via="" data-counturl="http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/" title="Previous Post: Hermes: A Jasper module for sending SMS messages">&laquo; Hermes: A Jasper module for sending SMS messages</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Website copyright &copy; 2016 - Chris Meier |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/TheChymera/Koenigspress">Königspress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

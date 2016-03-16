@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/</loc>
+    <lastmod>2016-03-15T21:33:45-04:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://chrismeiercs.github.io/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/</loc>
     <lastmod>2016-03-12T00:00:00-05:00</lastmod>
     <priority>0.8</priority>
@@ -17,49 +23,49 @@
   
   <url>
     <loc>http://chrismeiercs.github.io/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/blog/archives/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/blog/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/archives/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/posts/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/about/</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/index2.html</loc>
-    <lastmod>2016-03-12T21:17:35-05:00</lastmod>
+    <lastmod>2016-03-15T22:37:04-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

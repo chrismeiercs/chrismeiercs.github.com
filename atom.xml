@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-03-12T21:17:35-05:00</updated>
+  <updated>2016-03-15T22:37:04-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[NodeHeart Part 1: Setting Up the Heart Monitor]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/"/>
+    <updated>2016-03-15T21:33:45-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor</id>
+    <content type="html"><![CDATA[<p>In this series, we will be building a prototype smart heart monitor. The first part will be setting up the heart monitor with an Arduino.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hermes: A Jasper Module for Sending SMS Messages]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-03-26T21:54:00-04:00</updated>
+  <updated>2016-04-02T14:07:07-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mirror: The Open Source Amazon Echo]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo/"/>
+    <updated>2016-04-02T00:00:00-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo</id>
+    <content type="html"><![CDATA[<p>I recently got an <a href="http://www.amazon.com/Amazon-SK705DI-Echo/dp/B00X4WHP5E?ie=UTF8&amp;keywords=echo&amp;qid=1459616708&amp;ref_=sr_1_1&amp;sr=8-1">Amazon Echo</a> and I love using it. From its shopping list feature to playing my Pandora stations to its “flash briefing” news podcasts, it is thoroughly enjoyable. But its $180 price tag can be a bit steep. I decided to build one only using open source tools so that all may enjoy the awesomeness of an Echo.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NodeHeart Part 2: Becoming Smart]]></title>

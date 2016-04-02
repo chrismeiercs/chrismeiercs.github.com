@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Chris Meier</title>
+  <title>Mirror: The Open Source Amazon Echo - Chris Meier</title>
   <meta name="author" content="Chris Meier">
 
   <!-- Causes trouble with per-article font implementations under /source/_includes/article.html
@@ -21,7 +21,7 @@
 
   
 <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link rel="canonical" href="http://chrismeiercs.github.io">
+  <link rel="canonical" href="http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Chris Meier" type="application/atom+xml">
@@ -99,15 +99,14 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title" style="font-family: "><a href="/blog/2016/04/02/mirror-the-open-source-amazon-echo/">Mirror: The Open Source Amazon Echo</a></h1>
+      
+        <h1 class="entry-title" style="font-family: ">Mirror: The Open Source Amazon Echo</h1>
+      
     
     
       <p class="meta">
@@ -124,162 +123,96 @@
   </header>
 
 
-  <div class="entry-content" style="font-family: ; font-size: "><p>I recently got an <a href="http://www.amazon.com/Amazon-SK705DI-Echo/dp/B00X4WHP5E?ie=UTF8&amp;keywords=echo&amp;qid=1459616708&amp;ref_=sr_1_1&amp;sr=8-1">Amazon Echo</a> and I love using it. From its shopping list feature to playing my Pandora stations to its “flash briefing” news podcasts, it is thoroughly enjoyable. But its $180 price tag can be a bit steep. I decided to build one only using open source tools so that all may enjoy the awesomeness of an Echo.</p>
+<div class="entry-content" style="font-family: ; font-size: "><p>I recently got an <a href="http://www.amazon.com/Amazon-SK705DI-Echo/dp/B00X4WHP5E?ie=UTF8&amp;keywords=echo&amp;qid=1459616708&amp;ref_=sr_1_1&amp;sr=8-1">Amazon Echo</a> and I love using it. From its shopping list feature to playing my Pandora stations to its “flash briefing” news podcasts, it is thoroughly enjoyable. But its $180 price tag can be a bit steep. I decided to build one only using open source tools so that all may enjoy the awesomeness of an Echo.</p>
 
+<!--more-->
+
+
+<p>So, what features should Mirror have? I certainly love the Echo’s home automation and the way that it connects to entertainment. Here’s a list of features that Mirror will have:</p>
+
+<ol>
+<li>Control Philips Hue light bulbs.</li>
+<li>Control WeMo power sockets</li>
+<li>Ordering Dominos Pizza</li>
+<li>Ordering a ride with Uber (this one may be a while)</li>
+<li>Being able to look up information</li>
+<li>Stream music</li>
+<li>Check the weather</li>
+<li>Create a shopping list</li>
+</ol>
+
+
+<p>Mirror will be built using the Raspberry Pi for the hardware and <a href="http://jasperproject.github.io/">Jasper</a> for the voice recognition and command execution. We will also need a microphone to speak to Jasper. I used a simple webcam to do this. You can head on over to Jasper’s <a href="http://jasperproject.github.io/documentation/">setup guide</a> to get started. If you are using a platform that is armv6, you should check out my <a href="http://chrismeiercs.com/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus/">post</a> on getting voice recognition working for Jasper. If you don’t have a Pi, something similar such as BeagleBone Black will work just fine.</p>
+
+<p>Jasper has an great developer API that makes developing modules quick and easy. Mirror’s features will be available via Jasper modules and written in Python. Before we dive into developing modules for the features above, let take a look at what Jasper already offers us.</p>
+
+<p>Jasper comes with built-in Spotify support, so you can play your sweet playlists right out of the box. There’s also a weather module that can give you the forecast for your area. It also has some pretty cool third party modules. A combination of a Wikipedia lookup, Wolfram Alpha access, movie information retrieval, and a module that will give you the definition of words will pretty much allow you to ask it whatever you want and get a useful answer. There is also an Evernote module that will store notes for you which you can use to create a shopping list. Already we have crossed off four items off our list. We’re off to a great start! Here’s what our list looks like now:</p>
+
+<ol>
+<li>Control Philips Hue light bulbs.</li>
+<li>Control WeMo power sockets</li>
+<li>Ordering Dominos Pizza</li>
+<li>Ordering a ride with Uber</li>
+<li><del>Being able to look up information</del> (Wiki, Wolfram Apha, Movies, Define modules)</li>
+<li><del>Stream music</del> (Built in Spotify module)</li>
+<li><del>Check the weather</del> (Built in weather module)</li>
+<li><del>Create a shopping list</del> (Evernote module)</li>
+</ol>
+
+
+<p>This will leave four modules to develop ourselves. We will need to create controls for light bulbs, power sockets, ordering Uber rides, and ordering some delicious pizza. If you would like to join in the development of Mirror, feel free to write your own module and/or send in a pull request! The four modules will be as follows:</p>
+
+<ol>
+<li>Helios: Control Philips Hue light bulbs</li>
+<li>Mojave: Control WeMo devices</li>
+<li>Yfir: Order Uber rides with your voice</li>
+<li>Pizzeria: Easily order Domino’s pizza</li>
+</ol>
+
+
+<p>I’m pretty excited to start developing Mirror. The modules will be developed separately over time and each will get its own blog post. This way we can dive deep into it and have some fun. Be sure to check back frequently to catch the latest updates!</p>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/04/02/mirror-the-open-source-amazon-echo/">Read on &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer class="page-footer">
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Text authored by <span class="fn">Chris Meier</span></span>
+
+
+      
+
+
+
+
+
+      
+      
+
+
+    </p>
     
-      <h1 class="entry-title" style="font-family: "><a href="/blog/2016/03/26/nodeheart-part-2-becoming-smart/">NodeHeart Part 2: Becoming Smart</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content" style="font-family: ; font-size: "><p>With our smart heart monitor up and running, we now need to connect it to the web. This will enable the heart monitor to be viewed remotely at a nursing station.</p>
-
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo/" data-via="" data-counturl="http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/03/26/nodeheart-part-2-becoming-smart/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title" style="font-family: "><a href="/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/">NodeHeart Part 1: Setting Up the Heart Monitor</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content" style="font-family: ; font-size: "><p>In this series, we will be building a prototype smart heart monitor. The first part will be setting up the heart monitor with an Arduino.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/03/15/nodeheart-part-1-setting-up-the-heart-monitor/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+        <a class="basic-alignment left" href="/blog/2016/03/26/nodeheart-part-2-becoming-smart/" title="Previous Post: NodeHeart Part 2: Becoming Smart">&laquo; NodeHeart Part 2: Becoming Smart</a>
       
-  <header>
-    
-      <h1 class="entry-title" style="font-family: "><a href="/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/">Hermes: A Jasper Module for Sending SMS Messages</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content" style="font-family: ; font-size: "><p><a href="http://jasperproject.github.io/">Jasper</a> is a great platform to develop voice-controlled applications. It has excellent developer <a href="http://jasperproject.github.io/documentation/api/">documentation</a> that makes it easy to create your own modules. Jasper is pretty cool so I decided to start programming some modules myself.</p>
-
-<p>The first is called <a href="https://github.com/chrismeiercs/Hermes">Hermes</a>. This module will allow you to send SMS messages to your friends and family through the Twilio API. </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/03/12/hermes-a-jasper-module-for-sending-sms-messages/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title" style="font-family: "><a href="/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus/">Installing PocketSphinx for Jasper on the Raspberry Pi B+</a></h1>
-    
-    
-      <p class="meta">
-        
+    </p>
+  </footer>
+</article>
 
 
-
-
-
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content" style="font-family: ; font-size: "><p>This guide is meant to help anyone that is trying to put Jasper on the B+ and is having trouble installing PocketSphinx. </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/27/installing-jasper-on-raspberry-pi-b-plus/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
 
     </div>

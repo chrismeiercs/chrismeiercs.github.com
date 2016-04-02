@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://chrismeiercs.github.io/blog/2016/04/02/mirror-the-open-source-amazon-echo/</loc>
+    <lastmod>2016-04-02T00:00:00-04:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://chrismeiercs.github.io/blog/2016/03/26/nodeheart-part-2-becoming-smart/</loc>
     <lastmod>2016-03-26T21:37:21-04:00</lastmod>
     <priority>0.8</priority>
@@ -29,49 +35,49 @@
   
   <url>
     <loc>http://chrismeiercs.github.io/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/blog/archives/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/blog/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/archives/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/posts/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/about/</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://chrismeiercs.github.io/index2.html</loc>
-    <lastmod>2016-03-26T21:54:00-04:00</lastmod>
+    <lastmod>2016-04-02T14:07:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

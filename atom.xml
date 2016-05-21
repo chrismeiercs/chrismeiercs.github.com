@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-05-10T09:55:38-04:00</updated>
+  <updated>2016-05-21T16:08:21-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Beta Testing Part 1: Organization]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/05/21/beta-testing-part-1-organization/"/>
+    <updated>2016-05-21T00:00:00-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/05/21/beta-testing-part-1-organization</id>
+    <content type="html"><![CDATA[<p>At <a href="http://www.foodchain.co">FoodChain</a>, we have recently finished our beta test and you can now download the app on the <a href="https://play.google.com/store/apps/details?id=co.foodchain.officialfoodchain&amp;hl=en">Google Play</a> and <a href="https://itunes.apple.com/us/app/foodchain-sharing-meal-experience/id1073485182?mt=8">Apple</a> store. We learned quite a number of lessons during our testing phase and I would like to share them so that your beta tests can go smoothly.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Healthcare Startup Paradox]]></title>

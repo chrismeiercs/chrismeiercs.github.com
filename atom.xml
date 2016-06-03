@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-05-21T16:08:21-04:00</updated>
+  <updated>2016-06-02T21:36:41-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Beta Testing Part 2: Infrastructure and Logistics]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/06/02/beta-testing-part-2-infrastructure-and-logistics/"/>
+    <updated>2016-06-02T00:00:00-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/06/02/beta-testing-part-2-infrastructure-and-logistics</id>
+    <content type="html"><![CDATA[<p>In this second part on running a beta test, we will focus more on infrastructure and logistics. The whole purpose of a beta test is to find bugs in your app and fix them. We will look at how to distribute the app to testers and handle their bug submissions. How you set these up will be key in setting the tone of your beta. If done correctly it will be a smooth and enjoyable experience. But if done incorrectly it can become a bit of a nightmare.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Beta Testing Part 1: Organization]]></title>
@@ -24,7 +34,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Healthcare Startup Paradox]]></title>
+    <title type="html"><![CDATA[The Personal Healthcare Startup Paradox]]></title>
     <link href="http://chrismeiercs.github.io/blog/2016/05/10/healthcare-startup-paradox/"/>
     <updated>2016-05-10T00:00:00-04:00</updated>
     <id>http://chrismeiercs.github.io/blog/2016/05/10/healthcare-startup-paradox</id>

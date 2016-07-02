@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-06-18T18:01:06-04:00</updated>
+  <updated>2016-07-01T21:59:00-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Automating Beta Signup and Distribution]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/07/01/automating-beta-signup-and-distribution/"/>
+    <updated>2016-07-01T00:00:00-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/07/01/automating-beta-signup-and-distribution</id>
+    <content type="html"><![CDATA[<p>I previously talked about the importance of automating what you can at your startup. This frees up valuable time to work of what really matters and focus your attention. It can also help prevent mistakes resulting from human error. In this post, I will show you how to automate your beta signup and distribution process.]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Beta Testing Part 2: Infrastructure and Logistics]]></title>

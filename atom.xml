@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-09-30T20:06:52-04:00</updated>
+  <updated>2016-10-14T18:54:12-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Turning You Raspberry Pi Into an Eddystone-URL Beacon]]></title>
-    <link href="http://chrismeiercs.github.io/blog/2016/09/30/turning-you-raspberry-pi-into-an-eddystone-url-beacon/"/>
+    <title type="html"><![CDATA[Turning Your Raspberry Pi Into an Eddystone-URL Beacon]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/09/30/turning-your-raspberry-pi-into-an-eddystone-url-beacon/"/>
     <updated>2016-09-30T19:40:48-04:00</updated>
-    <id>http://chrismeiercs.github.io/blog/2016/09/30/turning-you-raspberry-pi-into-an-eddystone-url-beacon</id>
+    <id>http://chrismeiercs.github.io/blog/2016/09/30/turning-your-raspberry-pi-into-an-eddystone-url-beacon</id>
     <content type="html"><![CDATA[<p>The <a href="https://google.github.io/physical-web/">Physical Web</a> is cool new approach to the Internet of Things from Google. The Physical Web uses Eddystone beacons to broadcast URLs that can then be accessed by anyone via Bluetooth 4.0-enabled devices. This allows anyone to walk up to any object in their environment and interact with it. For example, people can walk up to a movie poster with a beacon broadcasting the URL for the trailer. One major benefit is that hardware-specific solutions don’t need to be developed &ndash; everything is done through the web. Eddystone is an open format, so there a many beacon manufacturers to choose from. However, if you don’t want to blow that kind of cash just for exploring you can make your own Eddystone-URL beacon with a Raspberry Pi. Here we will be doing just that.</p>
 
 ]]></content>

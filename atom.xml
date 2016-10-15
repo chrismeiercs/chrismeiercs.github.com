@@ -4,7 +4,7 @@
   <title><![CDATA[Chris Meier]]></title>
   <link href="http://chrismeiercs.github.io/atom.xml" rel="self"/>
   <link href="http://chrismeiercs.github.io/"/>
-  <updated>2016-10-14T18:54:12-04:00</updated>
+  <updated>2016-10-15T13:50:02-04:00</updated>
   <id>http://chrismeiercs.github.io/</id>
   <author>
     <name><![CDATA[Chris Meier]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ephemeral URL: Adding Context to Your Eddystone Beacons]]></title>
+    <link href="http://chrismeiercs.github.io/blog/2016/10/15/ephemeral-url-adding-context-to-your-eddystone-beacons/"/>
+    <updated>2016-10-15T13:43:34-04:00</updated>
+    <id>http://chrismeiercs.github.io/blog/2016/10/15/ephemeral-url-adding-context-to-your-eddystone-beacons</id>
+    <content type="html"><![CDATA[<p>Eddystone beacons provide a powerful tool that allows businesses to reach their customers in new ways. Restaurant owners can broadcast coupons to attract new patrons. For example, an ice cream parlor can give a 20% coupon when it is raining outside. When it stops raining, the coupon expires. This setup requires both time and proximity dimensions. So how do you add this kind of context to your Eddystone-URL? By using Ephemeral URLs.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Turning Your Raspberry Pi Into an Eddystone-URL Beacon]]></title>
